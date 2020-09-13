@@ -37,7 +37,7 @@ size(cat_img)
 img = imresize(cat_img, (300, 400))
 
 # ╔═╡ 11cec638-f530-11ea-120b-3d021a055733
-md"## Helpful Functions"
+md"## Functions for convolving"
 
 # ╔═╡ 28d671a0-f530-11ea-068a-d30d1015f1fe
 begin
@@ -53,7 +53,7 @@ function get_padded_image(im, kernel_sz)
 	add_ht = kernel_sz[1] - 1
 	add_wd = kernel_sz[2] - 1
 	
-	padded_im = zeros(Float64, (im_ht + add_ht, im_wd + add_wd))
+	padded_im = ones(Float64, (im_ht + add_ht, im_wd + add_wd))
 	kern_center = get_center(kernel_sz)
 	
 	first_h = kern_center[1]
@@ -116,22 +116,27 @@ begin
 	end
 
 	function blur(n)
-		a = Array{Float64, 2}(undef, (n, n)) 
-		return fill!(a, 1.0 / n^2)
+		return ones(Float64, n, n) / n^2 
 	end	
 
-	function convolve_main(img, blur_factor)
+	function convolve_main(img, kernel)
 		(r_comp, g_comp, b_comp) = get_RGB_components(img)
 
-		r_conv = convolute_images(r_comp, blur(blur_factor))
-		g_conv = convolute_images(g_comp, blur(blur_factor))
-		b_conv = convolute_images(b_comp, blur(blur_factor))
+		r_conv = convolute_images(r_comp, kernel)
+		g_conv = convolute_images(g_comp, kernel)
+		b_conv = convolute_images(b_comp, kernel)
 		return combine_colors.(r_conv, g_conv, b_conv)
 	end
 end
 
 # ╔═╡ f54c06d0-f5be-11ea-188a-5549c5893571
-convolve_main(img, 10)
+convolve_main(img, blur(10))
+
+# ╔═╡ 0216acb8-f5c1-11ea-34d1-bb5c9badad06
+begin
+	edge_detect = [-1.0 -1.0 -1.0; -1.0 8.0 -1.0; -1.0 -1.0 -1.0]
+	convolve_main(img, edge_detect)
+end
 
 # ╔═╡ Cell order:
 # ╟─de841902-ef55-11ea-1a4e-e93078de192d
@@ -145,3 +150,4 @@ convolve_main(img, 10)
 # ╟─a74bea3a-f5bf-11ea-2056-8b14c4654cec
 # ╠═68e5142a-f5be-11ea-04a6-d71f5aeec015
 # ╠═f54c06d0-f5be-11ea-188a-5549c5893571
+# ╠═0216acb8-f5c1-11ea-34d1-bb5c9badad06
