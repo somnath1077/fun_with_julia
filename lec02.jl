@@ -42,7 +42,7 @@ md"## Functions for convolving"
 # ╔═╡ 28d671a0-f530-11ea-068a-d30d1015f1fe
 begin
 	
-function get_center((height, width)::Tuple{Int64, Int64})
+function get_center((height, width))
 	return (convert(Int64, ceil(height / 2)), convert(Int64, ceil(width / 2)))
 end
 
