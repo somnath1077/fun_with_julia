@@ -18,9 +18,15 @@ md"# An Introduction to Julia and Pluto
 # ╔═╡ 443b1aa4-fd69-11ea-0d56-bb3b79db391b
 md"## And there shall be Greek!"
 
+# ╔═╡ a9b1b872-fd80-11ea-1468-2b0c88641bba
+x = 5
+
+# ╔═╡ ae0c2b8c-fd80-11ea-34e5-f51e53df5a77
+y = x^2
+
 # ╔═╡ c6f03756-fd67-11ea-2e7e-29d185e8ac72
 begin
-	α = 0
+	α = 2
 	β = 2
 	γ = 3
 	δ = 4
@@ -70,13 +76,7 @@ end
 gcd(2, 8)
 
 # ╔═╡ cf3b7a72-fd69-11ea-173d-2df17ece474e
-gcd(8, 4)
-
-# ╔═╡ d667ec90-fd69-11ea-1384-bf34e975729e
-gcd(1, 0)
-
-# ╔═╡ daeadd18-fd69-11ea-3395-730794a4055c
-gcd(-5, 5)
+gcd(17325, 345)
 
 # ╔═╡ e467d544-fd69-11ea-3b20-0f8f3ebabc5c
 gcd(-10, -5)
@@ -145,16 +145,16 @@ function convolve_at(padded_im, kernel, pos)
 	return sum(padded_im[first_h:last_h, first_w:last_w] .* kernel)
 end
 
-function convolute_images(im, kernel)
-	padded_im = get_padded_image(im, size(kernel))
-	ret_im = zeros(Float64, size(im))
+function convolute_images(img, kernel)
+	padded_img = get_padded_image(img, size(kernel))
+	ret_img = zeros(Float64, size(img))
 		
-	for row in 1:size(ret_im)[1]
-		for col in 1:size(ret_im)[2]
-			ret_im[row, col] = convolve_at(padded_im, kernel, (row, col))
+	for row in 1:size(ret_img)[1]
+		for col in 1:size(ret_img)[2]
+			ret_img[row, col] = convolve_at(padded_img, kernel, (row, col))
 		end
 	end
-	return ret_im
+	return ret_img
 end
 	
 end
@@ -194,6 +194,12 @@ begin
 		return combine_colors.(r_conv, g_conv, b_conv)
 	end
 end
+
+# ╔═╡ 3b436ac0-fd80-11ea-23e1-6131fbc1a566
+color = RGBX(0.2, 0.4, 0.5)
+
+# ╔═╡ 418b1a72-fd80-11ea-3943-b56d2592ce72
+get_red(color)
 
 # ╔═╡ ed40907c-fd67-11ea-0989-57c037020d50
 md"## Blurring Images"
@@ -237,6 +243,8 @@ convolve_main(img, S)
 # ╔═╡ Cell order:
 # ╟─de841902-ef55-11ea-1a4e-e93078de192d
 # ╟─443b1aa4-fd69-11ea-0d56-bb3b79db391b
+# ╠═a9b1b872-fd80-11ea-1468-2b0c88641bba
+# ╠═ae0c2b8c-fd80-11ea-34e5-f51e53df5a77
 # ╠═c6f03756-fd67-11ea-2e7e-29d185e8ac72
 # ╠═7ba28db6-fd68-11ea-00e6-a50cdd5e1c00
 # ╠═cd3c51a2-fd68-11ea-1e98-2d7243725f10
@@ -249,13 +257,11 @@ convolve_main(img, S)
 # ╠═fa5707e0-fd68-11ea-12a8-abe10351c405
 # ╠═c7322eea-fd69-11ea-0d75-bfa3ffcf34ea
 # ╠═cf3b7a72-fd69-11ea-173d-2df17ece474e
-# ╠═d667ec90-fd69-11ea-1384-bf34e975729e
-# ╠═daeadd18-fd69-11ea-3395-730794a4055c
 # ╠═e467d544-fd69-11ea-3b20-0f8f3ebabc5c
 # ╟─66818094-fd69-11ea-2c19-41b9631fb375
 # ╠═3091922e-fd7f-11ea-19ba-f3836c82e08b
 # ╟─cef8dfaa-fd6e-11ea-3e40-1d1ec66c0619
-# ╠═6b8d7ee6-fd6c-11ea-0789-21fe119334ad
+# ╟─6b8d7ee6-fd6c-11ea-0789-21fe119334ad
 # ╠═04981932-ef55-11ea-0357-4b296df2880a
 # ╠═4d66a14e-ef58-11ea-39e4-aff29ee497f8
 # ╠═12c629c4-fd6d-11ea-1f5d-e3cac5cc838a
@@ -265,6 +271,8 @@ convolve_main(img, S)
 # ╠═28d671a0-f530-11ea-068a-d30d1015f1fe
 # ╟─a74bea3a-f5bf-11ea-2056-8b14c4654cec
 # ╠═68e5142a-f5be-11ea-04a6-d71f5aeec015
+# ╠═3b436ac0-fd80-11ea-23e1-6131fbc1a566
+# ╠═418b1a72-fd80-11ea-3943-b56d2592ce72
 # ╟─ed40907c-fd67-11ea-0989-57c037020d50
 # ╠═f9fe2c3e-fd67-11ea-0fb5-09a5f6a16ff3
 # ╠═f54c06d0-f5be-11ea-188a-5549c5893571
