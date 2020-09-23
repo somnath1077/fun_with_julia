@@ -81,11 +81,11 @@ gcd(-5, 5)
 # ╔═╡ e467d544-fd69-11ea-3b20-0f8f3ebabc5c
 gcd(-10, -5)
 
-# ╔═╡ 42648740-ef56-11ea-3da5-af2fb6948027
-pwd()
-
 # ╔═╡ 66818094-fd69-11ea-2c19-41b9631fb375
 md"## Convoluting Images"
+
+# ╔═╡ 3091922e-fd7f-11ea-19ba-f3836c82e08b
+pwd()
 
 # ╔═╡ cef8dfaa-fd6e-11ea-3e40-1d1ec66c0619
 md"https://medium.com/@bdhuma/6-basic-things-to-know-about-convolution-daef5e1bc411"
@@ -252,8 +252,8 @@ convolve_main(img, S)
 # ╠═d667ec90-fd69-11ea-1384-bf34e975729e
 # ╠═daeadd18-fd69-11ea-3395-730794a4055c
 # ╠═e467d544-fd69-11ea-3b20-0f8f3ebabc5c
-# ╠═42648740-ef56-11ea-3da5-af2fb6948027
 # ╟─66818094-fd69-11ea-2c19-41b9631fb375
+# ╠═3091922e-fd7f-11ea-19ba-f3836c82e08b
 # ╟─cef8dfaa-fd6e-11ea-3e40-1d1ec66c0619
 # ╠═6b8d7ee6-fd6c-11ea-0789-21fe119334ad
 # ╠═04981932-ef55-11ea-0357-4b296df2880a
