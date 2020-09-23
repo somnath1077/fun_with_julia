@@ -32,6 +32,28 @@ z(a, b) = α * a^2 + β * a * b + γ * b^2 + δ
 # ╔═╡ cd3c51a2-fd68-11ea-1e98-2d7243725f10
 z(1, 2)
 
+# ╔═╡ 0a77b05c-fd7d-11ea-34aa-5d76e5d91164
+md"### Math Constants"
+
+# ╔═╡ b93a5866-fd7c-11ea-3543-e5455a87291b
+π
+
+# ╔═╡ bde55eee-fd7c-11ea-3200-f728444cbd52
+ℯ
+
+# ╔═╡ 43c23d1e-fd7d-11ea-0d54-9186e498b91a
+md"### Euler's Equation 
+
+``
+$
+	e^{i \pi} + 1 = 0
+$
+``
+"
+
+# ╔═╡ 1efc1338-fd7d-11ea-180e-87ba1b4badf1
+ℯ^(im * π) + 1
+
 # ╔═╡ 7af67b92-fd69-11ea-0808-d93f995c6239
 md"## A Famous Greek Guy and His Algorithm"
 
@@ -64,6 +86,9 @@ pwd()
 
 # ╔═╡ 66818094-fd69-11ea-2c19-41b9631fb375
 md"## Convoluting Images"
+
+# ╔═╡ cef8dfaa-fd6e-11ea-3e40-1d1ec66c0619
+md"https://medium.com/@bdhuma/6-basic-things-to-know-about-convolution-daef5e1bc411"
 
 # ╔═╡ 6b8d7ee6-fd6c-11ea-0789-21fe119334ad
 convolving_diagram = load("convolving_images.png")
@@ -215,16 +240,22 @@ convolve_main(img, S)
 # ╠═c6f03756-fd67-11ea-2e7e-29d185e8ac72
 # ╠═7ba28db6-fd68-11ea-00e6-a50cdd5e1c00
 # ╠═cd3c51a2-fd68-11ea-1e98-2d7243725f10
+# ╟─0a77b05c-fd7d-11ea-34aa-5d76e5d91164
+# ╠═b93a5866-fd7c-11ea-3543-e5455a87291b
+# ╠═bde55eee-fd7c-11ea-3200-f728444cbd52
+# ╟─43c23d1e-fd7d-11ea-0d54-9186e498b91a
+# ╠═1efc1338-fd7d-11ea-180e-87ba1b4badf1
 # ╟─7af67b92-fd69-11ea-0808-d93f995c6239
 # ╠═fa5707e0-fd68-11ea-12a8-abe10351c405
-# ╟─c7322eea-fd69-11ea-0d75-bfa3ffcf34ea
-# ╟─cf3b7a72-fd69-11ea-173d-2df17ece474e
-# ╟─d667ec90-fd69-11ea-1384-bf34e975729e
-# ╟─daeadd18-fd69-11ea-3395-730794a4055c
-# ╟─e467d544-fd69-11ea-3b20-0f8f3ebabc5c
+# ╠═c7322eea-fd69-11ea-0d75-bfa3ffcf34ea
+# ╠═cf3b7a72-fd69-11ea-173d-2df17ece474e
+# ╠═d667ec90-fd69-11ea-1384-bf34e975729e
+# ╠═daeadd18-fd69-11ea-3395-730794a4055c
+# ╠═e467d544-fd69-11ea-3b20-0f8f3ebabc5c
 # ╠═42648740-ef56-11ea-3da5-af2fb6948027
 # ╟─66818094-fd69-11ea-2c19-41b9631fb375
-# ╟─6b8d7ee6-fd6c-11ea-0789-21fe119334ad
+# ╟─cef8dfaa-fd6e-11ea-3e40-1d1ec66c0619
+# ╠═6b8d7ee6-fd6c-11ea-0789-21fe119334ad
 # ╠═04981932-ef55-11ea-0357-4b296df2880a
 # ╠═4d66a14e-ef58-11ea-39e4-aff29ee497f8
 # ╠═12c629c4-fd6d-11ea-1f5d-e3cac5cc838a
