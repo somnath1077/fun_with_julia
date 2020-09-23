@@ -4,6 +4,15 @@
 using Markdown
 using InteractiveUtils
 
+# This Pluto notebook uses @bind for interactivity. When running this notebook outside of Pluto, the following 'mock version' of @bind gives bound variables a default value (instead of an error).
+macro bind(def, element)
+    quote
+        local el = $(esc(element))
+        global $(esc(def)) = Core.applicable(Base.get, el) ? Base.get(el) : missing
+        el
+    end
+end
+
 # ╔═╡ 04981932-ef55-11ea-0357-4b296df2880a
 begin
 	using Images
@@ -11,18 +20,25 @@ begin
 	cat_img = load("cat.jpg")
 end
 
+# ╔═╡ 58bd8baa-fd81-11ea-1895-618702888b37
+begin
+	using PlutoUI
+	
+	@bind blur_factor Slider(1:20, show_value=true)
+end
+
 # ╔═╡ de841902-ef55-11ea-1a4e-e93078de192d
 md"# An Introduction to Julia and Pluto
 "
 
+# ╔═╡ 7eaa2560-fd85-11ea-3aaa-0142a1e78325
+x = 6
+
+# ╔═╡ 8315cda2-fd85-11ea-0743-adf8c7da9360
+y = x^2
+
 # ╔═╡ 443b1aa4-fd69-11ea-0d56-bb3b79db391b
 md"## And there shall be Greek!"
-
-# ╔═╡ a9b1b872-fd80-11ea-1468-2b0c88641bba
-x = 5
-
-# ╔═╡ ae0c2b8c-fd80-11ea-34e5-f51e53df5a77
-y = x^2
 
 # ╔═╡ c6f03756-fd67-11ea-2e7e-29d185e8ac72
 begin
@@ -73,7 +89,7 @@ function gcd(a, b)
 end
 
 # ╔═╡ c7322eea-fd69-11ea-0d75-bfa3ffcf34ea
-gcd(2, 8)
+gcd(34, 8)
 
 # ╔═╡ cf3b7a72-fd69-11ea-173d-2df17ece474e
 gcd(17325, 345)
@@ -209,8 +225,8 @@ function blur(n)
 	return ones(Float64, n, n) / n^2 
 end	
 
-# ╔═╡ f54c06d0-f5be-11ea-188a-5549c5893571
-convolve_main(img, blur(10))
+# ╔═╡ f3f624e4-fd81-11ea-0071-f34fe9bcbbdb
+convolve_main(img, blur(blur_factor))
 
 # ╔═╡ 1bc335c6-fd68-11ea-26eb-0b4f51bc5a5b
 md"## Detecting Edges"
@@ -242,9 +258,9 @@ convolve_main(img, S)
 
 # ╔═╡ Cell order:
 # ╟─de841902-ef55-11ea-1a4e-e93078de192d
+# ╠═7eaa2560-fd85-11ea-3aaa-0142a1e78325
+# ╠═8315cda2-fd85-11ea-0743-adf8c7da9360
 # ╟─443b1aa4-fd69-11ea-0d56-bb3b79db391b
-# ╠═a9b1b872-fd80-11ea-1468-2b0c88641bba
-# ╠═ae0c2b8c-fd80-11ea-34e5-f51e53df5a77
 # ╠═c6f03756-fd67-11ea-2e7e-29d185e8ac72
 # ╠═7ba28db6-fd68-11ea-00e6-a50cdd5e1c00
 # ╠═cd3c51a2-fd68-11ea-1e98-2d7243725f10
@@ -275,7 +291,8 @@ convolve_main(img, S)
 # ╠═418b1a72-fd80-11ea-3943-b56d2592ce72
 # ╟─ed40907c-fd67-11ea-0989-57c037020d50
 # ╠═f9fe2c3e-fd67-11ea-0fb5-09a5f6a16ff3
-# ╠═f54c06d0-f5be-11ea-188a-5549c5893571
+# ╠═58bd8baa-fd81-11ea-1895-618702888b37
+# ╠═f3f624e4-fd81-11ea-0071-f34fe9bcbbdb
 # ╟─1bc335c6-fd68-11ea-26eb-0b4f51bc5a5b
 # ╟─21c2dfbc-fd68-11ea-034b-1946e229cca1
 # ╠═3b2372f0-fd68-11ea-232c-b16e39d911e2
